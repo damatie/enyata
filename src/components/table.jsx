@@ -34,19 +34,18 @@ const DataTable = (props) => {
         </table>)
         }
         {items && items.length===0 && !isLoading &&
-        (<div className=" w-full mx-auto text-gray-400  text-lg text-center py-6">
-      <HiEmojiSad className=" text-[80px] mx-auto"/>
-        No Data Found
-        </div>) 
+         (<div className=" w-full mx-auto text-gray-400  text-lg text-center py-6">
+            Loading
+          </div>) 
          
         }
 
-        {isLoading &&
+        {/* {isLoading &&
      
           (<div className=" w-full mx-auto text-gray-400  text-lg text-center py-6">
             Loading
           </div>)
-        }
+        } */}
     </div>
    </div>
   )
