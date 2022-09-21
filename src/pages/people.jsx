@@ -50,8 +50,9 @@ const People = () => {
   const navigate = useNavigate();
 
   const handleDetails = (id) =>{ 
-    navigate(`/people/details/${id}`);
-     console.log(id)
+    const nId = id[0]
+    console.log(nId)
+     navigate(`/people/details/${nId}`);
   }
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const People = () => {
           >
             {Object.values(filmPeople).map((cellItems, index)=>(
               <tr key={index} className=' border-b cursor-pointer'
-                 onClick={() => handleDetails(cellItems.url.slice(29, 30))}
+                 onClick={() => handleDetails(cellItems.url.match(/\d+/))}
               >
                  <td className="pl-5 py-4">
                   <input type="checkbox" className="checkbox" />

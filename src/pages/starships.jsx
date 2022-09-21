@@ -28,8 +28,9 @@ const Starships = () => {
   
  const navigate = useNavigate();
   const handleDetails = (id) =>{ 
-    navigate(`/starships/details/${id}`);
-     console.log(id)
+    const nId = id[0]
+    console.log(nId)
+     navigate(`/starships/details/${nId}`);
   }
 
   const fetchPeople = () => {
@@ -79,7 +80,7 @@ const Starships = () => {
           >
             {Object.values(starShip).map((cellItems, index)=>(
               <tr key={index} className=' border-b cursor-pointer'
-                 onClick={() => handleDetails(cellItems.url.slice(32, 33))}
+                 onClick={() => handleDetails(cellItems.url.match(/\d+/))}
               >
                  <td className="pl-5 py-4">
                   <input type="checkbox" className="checkbox" />

@@ -38,8 +38,9 @@ const Home = () => {
    const navigate = useNavigate();
 
    const handleDetails = (id) =>{ 
-    navigate(`/film/details/${id}`);
-    //  console.log(id)
+     const nId = id[0]
+    console.log(nId)
+     navigate(`/film/details/${nId}`);
   }
 
 
@@ -88,7 +89,7 @@ const Home = () => {
           >
             {films.map((cellItems, index)=>(
               <tr key={index} className=' border-b cursor-pointer'
-                onClick={() => handleDetails(cellItems.url.slice(28, 29))}>
+                onClick={() => handleDetails(cellItems.url.match(/\d+/))}>
                  <td className="pl-5 py-4">
                   <input type="checkbox" className="checkbox" />
                 </td>
