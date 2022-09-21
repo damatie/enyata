@@ -38,7 +38,7 @@ const Home = () => {
    const navigate = useNavigate();
 
    const handleDetails = (id) =>{ 
-    navigate(`/details/${id}`);
+    navigate(`/details-film/${id}`);
     //  console.log(id)
   }
 

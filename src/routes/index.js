@@ -17,7 +17,7 @@ const AllRoutes = () => {
         <Route path='/starships' element={<Starships />} />
         <Route path='/people' element={<People />} />
         <Route path='/species' element={<Species />} />
-        <Route path='/details/:id' element={<Details />} />
+        <Route path='/details-film/:id' element={<Details />} />
          <Route path='/details-people/:id' element={<DetailsPeople />} />
         <Route path='*' element={<ErrorPage/> } />
       </Routes>      

@@ -1,7 +1,7 @@
 import { AppLayout } from "../layout/AppLayout"
 import React, {useEffect, useState} from 'react'
 import { useNavigate, useParams } from "react-router-dom";
-import { getOnePeople } from "../services/apiFactory";
+import { getOneFilm } from "../services/apiFactory";
 import { DetailsCard } from "../components/detailsCard";
 import Image from '../assets/image1.svg'
 import Moment from 'react-moment';
@@ -21,9 +21,9 @@ const DetailsPeople = () => {
   const getData = () => {
       console.log(id)
     setTimeout(function(){
-      getOnePeople(Number(id)).then((res) => 
+      getOneFilm(Number(id)).then((res) => 
     {
-      console.log(res.data)
+      // console.log(res.data)
        setFilm(res?.data)
        setIsLoading(false)
     }).catch((err) =>
