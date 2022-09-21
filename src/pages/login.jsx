@@ -9,7 +9,6 @@ import * as Yup from 'yup'
 
 const Login = () => {
   const navigate = useNavigate();
-    const [statusMessage, setStatusMessage] = useState('')
     const userInfo = {
     email:'',
     password:'' 
@@ -18,7 +17,10 @@ const Login = () => {
   // Validation schema
   const validationSchema = Yup.object({
     email: Yup.string().trim().email('*Invalid email').required('*Email is required'),
-    password: Yup.string().trim().required('*Password is required').length(6)
+    password: Yup.string().trim().required('*Password is required').length(6).matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{4,})/,
+      "Must Contain 4 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    )
   })
 
   // Handle login
