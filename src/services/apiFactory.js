@@ -25,9 +25,15 @@ export const getPeople = () => {
   return AxiosHost.get(url);
 };
 
-// Get People
+// Get Starships
 export const getStarships = () => {
   const url = `/starships/`;
+  return AxiosHost.get(url);
+};
+
+// Get OneStarship
+export const getOneStarship = (id) => {
+  const url = `/starships/${id}`;
   return AxiosHost.get(url);
 };
 

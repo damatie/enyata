@@ -3,12 +3,12 @@ import { AppLayout } from '../layout/AppLayout'
 import { StatCard } from '../components/statCard'
 import { statData } from '../utils/Constants'
 import DataTable from '../components/table'
+import { useNavigate } from 'react-router-dom'
 import { 
   getStarships,
   getPeople,
   getFilms
 } from '../services/apiFactory'
-import EnhancedTable from '../components/dataTable'
 
 // Films
 const itemsHead = [
@@ -26,6 +26,11 @@ const Starships = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   
+ const navigate = useNavigate();
+  const handleDetails = (id) =>{ 
+    navigate(`/starships/details/${id}`);
+     console.log(id)
+  }
 
   const fetchPeople = () => {
  
@@ -73,7 +78,9 @@ const Starships = () => {
             itemsHead={itemsHead}
           >
             {Object.values(starShip).map((cellItems, index)=>(
-              <tr key={index} className=' border-b'>
+              <tr key={index} className=' border-b cursor-pointer'
+                 onClick={() => handleDetails(cellItems.url.slice(32, 33))}
+              >
                  <td className="pl-5 py-4">
                   <input type="checkbox" className="checkbox" />
                 </td>

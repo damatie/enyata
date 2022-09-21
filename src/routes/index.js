@@ -6,6 +6,7 @@ import Species from "../pages/species";
 import Details from "../pages/details";
 import Login from "../pages/login";
 import DetailsPeople from "../pages/peopleDetails";
+import DetailsStarship from "../pages/starshipsDetails";
 import ErrorPage from "../pages/errorPage";
 
 const AllRoutes = () => {
@@ -18,7 +19,8 @@ const AllRoutes = () => {
         <Route path='/people' element={<People />} />
         <Route path='/species'   element={<Species />} />
         <Route exact path='/film/details/:id' element={<Details />} />
-         <Route exact path='/people/details/:id' element={<DetailsPeople />} />
+        <Route exact path='/people/details/:id' element={<DetailsPeople />} />
+        <Route exact path='/starships/details/:id' element={<DetailsStarship />} />
         <Route path='*' element={<ErrorPage/> } />
       </Routes>      
       </Router>
