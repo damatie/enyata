@@ -7,7 +7,7 @@ import Image from '../assets/image1.svg'
 import Moment from 'react-moment';
 
 
-const DetailsPeople = () => {
+const Details = () => {
   const [film, setFilm] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [newId, setNewId] = useState()
@@ -23,7 +23,7 @@ const DetailsPeople = () => {
     setTimeout(function(){
       getOneFilm(Number(id)).then((res) => 
     {
-      // console.log(res.data)
+      console.log(res.data)
        setFilm(res?.data)
        setIsLoading(false)
     }).catch((err) =>
@@ -41,11 +41,9 @@ const DetailsPeople = () => {
       <div className='  flex flex-col w-full   mx-auto justify-evenly, justify-start '>
         <div className=' mt-0'>
           {!isLoading && <DetailsCard image={Image} name={film&&film.title} >
-            <p>{film&&film.director}</p>
-            <p>{film&&film.producer}</p>
-            <p>
-            
-            <Moment format="MMM D YYYY" withTitle>
+            <p>Director: {film&&film.director}</p>
+            <p>Producer: {film&&film.producer}</p>
+            <p>Released Date: <Moment format="MMM D YYYY" withTitle>
                 {film&&film.release_date}
             </Moment></p>
           </DetailsCard>}
@@ -60,4 +58,4 @@ const DetailsPeople = () => {
     </AppLayout>
   )
 }
-export default DetailsPeople
+export default Details

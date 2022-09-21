@@ -3,11 +3,11 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { getOnePeople } from "../services/apiFactory";
 import { DetailsCard } from "../components/detailsCard";
-import Image from '../assets/image1.svg'
+import Image from '../assets/image3.svg'
 import Moment from 'react-moment';
 
 
-const Details = () => {
+const DetailsPeople = () => {
   const [people, setPeople] = useState()
   const [isLoading, setIsLoading] = useState(true)
    const {id} = useParams()
@@ -19,16 +19,16 @@ const Details = () => {
 
   console.log(people)
   const getData = () => {
-    //   console.log(id)
-    // setTimeout(function(){
-    //   getOnePeople(Number(1)).then((res) => 
-    // {
-    //   console.log(res)
-    //   //  setPeople(res?.data)
-    //    setIsLoading(false)
-    // }).catch((err) =>
-    //   console.log(err))   
-    // }, 4000);
+      console.log(id)
+    setTimeout(function(){
+      getOnePeople(Number(id)).then((res) => 
+    {
+      // console.log(res)
+       setPeople(res?.data)
+       setIsLoading(false)
+    }).catch((err) =>
+      console.log(err))   
+    }, 4000);
  
   }
   
@@ -37,28 +37,23 @@ const Details = () => {
         
   }, [id])
   return (
-    <AppLayout isBack={true} onclick={goBack}>
-      people
+     <AppLayout isBack={true} onclick={goBack}>
       <div className='  flex flex-col w-full   mx-auto justify-evenly, justify-start '>
-        <div className=' mt-0'>hgfguhoi
-          {/* {!isLoading && <DetailsCard image={Image} name={people&&people.title} >
-            <p>{people&&people.director}</p>
-            <p>{people&&people.producer}</p>
-            <p>
-            
-            <Moment format="MMM D YYYY" withTitle>
-                {people&&people.release_date}
-            </Moment></p>
+        <div className=' mt-0'>
+          {!isLoading && <DetailsCard image={Image} name={people&&people.name} >
+            <p>Gender: {people&&people.gender}</p>
+            <p>Skin: {people&&people.skin_color}</p>
+            <p>Height: {people&&people.height}CM</p>
           </DetailsCard>}
 
           {isLoading &&
             <div className=" text-center text-base">
               <p> Loading</p>
             </div>
-            } */}
+            }
         </div>
       </div>
     </AppLayout>
   )
 }
-export default Details
+export default DetailsPeople

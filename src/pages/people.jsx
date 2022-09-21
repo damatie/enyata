@@ -50,7 +50,7 @@ const People = () => {
   const navigate = useNavigate();
 
   const handleDetails = (id) =>{ 
-    navigate(`/details-people/${id}`);
+    navigate(`/people/details/${id}`);
      console.log(id)
   }
 
