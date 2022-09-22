@@ -37,3 +37,14 @@ export const getOneStarship = (id) => {
   return AxiosHost.get(url);
 };
 
+// Get Species
+export const getSpecies = () => {
+  const url = `/species/`;
+  return AxiosHost.get(url);
+};
+
+// Get OneSpecies
+export const getOneSpecies = (id) => {
+  const url = `/species/${id}`;
+  return AxiosHost.get(url);
+};

@@ -3,13 +3,14 @@ import { AppLayout } from '../layout/AppLayout'
 import { StatCard } from '../components/statCard'
 import { statData } from '../utils/Constants'
 import DataTable from '../components/table'
+import { useNavigate } from 'react-router-dom'
 import Moment from 'react-moment';
 import { 
   getStarships,
+  getSpecies,
   getPeople,
   getFilms
 } from '../services/apiFactory'
-import EnhancedTable from '../components/dataTable'
 
 // Films
 const itemsHead = [
@@ -23,46 +24,26 @@ const itemsHead = [
 const Species = () => {
   const [films, setFilms] = useState([])
   const [starShip, setStarShip] = useState([])
-  const [filmPeople, setFilmPeople] = useState([])
+  const [species, setSpecies] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  
-
-  const fetchPeople = () => {
- 
-     getPeople().then((res) => 
-    {
-      // console.log(res.data.results)
-       setFilmPeople(res?.data?.results)
-       setIsLoading(false)
-    }).catch((err) =>
-      console.log(err)
-    )
-     getFilms().then((res) => 
-    {
-      // console.log(res.data.results)
-       setFilms(res?.data?.results)
-       setIsLoading(false)
-    }).catch((err) =>
-      console.log(err)
-    )
+  const navigate = useNavigate();
+  const handleDetails = (id) =>{ 
+    const nId = id[0]
+    console.log(nId)
+     navigate(`/species/details/${nId}`);
   }
 
+
   useEffect(() => {
-    getStarships().then((res) => 
+    getSpecies().then((res) => 
     {
-      // console.log(res.data)
+      console.log(res.data)
       setStarShip(res?.data?.results)
     }).catch((err) =>
       console.log(err))
   }, [films])
 
-    useEffect(() => {
-     if (isLoading) {
-      fetchPeople()
-    }
-
-  }, [isLoading, films,filmPeople ])
 // console.log(films)
   return (
     <AppLayout>
@@ -70,11 +51,13 @@ const Species = () => {
         <div className=' mt-0'>
           <p className=' text-base text-textColor2 mb-6'>Species</p>
           <DataTable
-            items={filmPeople}
+            items={starShip}
             itemsHead={itemsHead}
           >
-            {Object.values(filmPeople).map((cellItems, index)=>(
-              <tr key={index} className=' border-b'>
+            {Object.values(starShip).map((cellItems, index)=>(
+              <tr key={index} className=' border-b cursor-pointer'
+                onClick={() => handleDetails(cellItems.url.match(/\d+/))}
+              >
                  <td className="pl-5 py-4">
                   <input type="checkbox" className="checkbox" />
                 </td>
@@ -82,16 +65,16 @@ const Species = () => {
                  {cellItems.name}
                 </td>
                 <td className=" py-4 ">
-                 {}
+                 {cellItems.classification}
                 </td>
                 <td className=" py-4  ">
-                 {cellItems.eye_color}
+                 {cellItems.eye_colors}
                 </td>
                 <td className=" py-4  break-words ">
-                 {cellItems.hair_color}
+                 {cellItems.hair_colors}
                 </td>
                 <td className=" py-4  ">
-                  {cellItems.height} CM
+                  {cellItems.height} n/a
                 </td>
                 <td className=" py-4  ">
                   

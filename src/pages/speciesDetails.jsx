@@ -1,18 +1,15 @@
 import { AppLayout } from "../layout/AppLayout"
 import React, {useEffect, useState} from 'react'
-import { useNavigate, useParams,useLocation } from "react-router-dom";
-import { getOneFilm } from "../services/apiFactory";
+import { useNavigate, useParams } from "react-router-dom";
+import { getOneSpecies } from "../services/apiFactory";
 import { DetailsCard } from "../components/detailsCard";
-import Image from '../assets/image1.svg'
+import Image from '../assets/image4.svg'
 import Moment from 'react-moment';
 
 
-const Details = () => {
-   const location = useLocation();
-  console.log(location.pathname)
-  const [film, setFilm] = useState()
+const DetailsSpecies = () => {
+  const [species, setSpecies] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  const [newId, setNewId] = useState()
    const {id} = useParams()
    const navigate = useNavigate();
   
@@ -20,13 +17,14 @@ const Details = () => {
         navigate(-1);
   }
 
+  console.log(species)
   const getData = () => {
       console.log(id)
     setTimeout(function(){
-      getOneFilm(Number(id)).then((res) => 
+      getOneSpecies(Number(id)).then((res) => 
     {
-      console.log(res.data)
-       setFilm(res?.data)
+      // console.log(res)
+       setSpecies(res?.data)
        setIsLoading(false)
     }).catch((err) =>
       console.log(err))   
@@ -37,17 +35,15 @@ const Details = () => {
   useEffect(() => {
     getData()
         
-  }, [newId])
+  }, [id])
   return (
      <AppLayout isBack={true} onclick={goBack}>
       <div className='  flex flex-col w-full   mx-auto justify-evenly, justify-start '>
         <div className=' mt-0'>
-          {!isLoading && <DetailsCard image={Image} name={film&&film.title} >
-            <p>Director: {film&&film.director}</p>
-            <p>Producer: {film&&film.producer}</p>
-            <p>Released Date: <Moment format="MMM D YYYY" withTitle>
-                {film&&film.release_date}
-            </Moment></p>
+          {!isLoading && <DetailsCard image={Image} name={species&&species.name} >
+            <p>Designation: {species&&species.designation}</p>
+            <p>Language: {species&&species.language}</p>
+            <p>Eye Colors: {species&&species.eye_colors}</p>
           </DetailsCard>}
 
           {isLoading &&
@@ -60,4 +56,4 @@ const Details = () => {
     </AppLayout>
   )
 }
-export default Details
+export default DetailsSpecies

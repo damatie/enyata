@@ -7,6 +7,7 @@ import Details from "../pages/details";
 import Login from "../pages/login";
 import DetailsPeople from "../pages/peopleDetails";
 import DetailsStarship from "../pages/starshipsDetails";
+import DetailsSpecies from "../pages/speciesDetails";
 import ErrorPage from "../pages/errorPage";
 
 const AllRoutes = () => {
@@ -21,6 +22,7 @@ const AllRoutes = () => {
         <Route exact path='/film/details/:id' element={<Details />} />
         <Route exact path='/people/details/:id' element={<DetailsPeople />} />
         <Route exact path='/starships/details/:id' element={<DetailsStarship />} />
+        <Route exact path='/species/details/:id' element={<DetailsSpecies />} />
         <Route path='*' element={<ErrorPage/> } />
       </Routes>      
       </Router>

@@ -2,18 +2,21 @@ export const sideNavLinks = [
   {
   name: 'Starships',
   url: '/starships',
+  child:'/starships/details',
   icon: 'bxs:square-rounded',
   color:'#A9C1FF',
   },
   {
   name: 'People',
   url: '/people',
+  child:'/people/details',
   icon: 'bxs:square-rounded',
   color:'#FFA9EC',
   },
   {
   name: 'Species',
   url: '/species',
+  child:'/species/details',
   icon: 'bxs:square-rounded',
   color:'#FDFFA9',
 }
