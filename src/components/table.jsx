@@ -13,7 +13,7 @@ const DataTable = (props) => {
   
   return(
    <div className="w-full ">
-      <div className=" w-full  mt-4 bg-white py-0 border border-[#A4A7B7] 
+      <div className=" overflow-x-auto w-full  mt-4 bg-white py-0 border border-[#A4A7B7] 
     rounded-[4px] shadow-sm">  
       {items && items.length>0 &&
      (   <table className=" w-full text-base ">

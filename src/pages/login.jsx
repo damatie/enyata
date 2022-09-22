@@ -36,7 +36,7 @@ const Login = () => {
   return (
     <LoginLayout>
       <div className='w-full my-auto '>
-        <div className=' mx-auto  h-[564px] w-[467px] border   rounded-[8px] border-[rgba(164, 167, 183, 0.3)]'>
+        <div className=' mx-auto  h-[564px] w-full md:w-[467px] border   rounded-[8px] border-[rgba(164, 167, 183, 0.3)]'>
           <div className='w-[335px]  mx-auto py-[36px] h-full relative'>
             <h1 className=' text-[24px] font-semibold text-textColor1'>
             Login 
